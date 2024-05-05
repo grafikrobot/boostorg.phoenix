@@ -11,6 +11,7 @@
 import testing ;
 import os ;
 
+import-search /boost/config/checks ;
 import config : requires ;
 
 if [ os.environ CI ]
@@ -88,7 +89,7 @@ test-suite phoenix_bind :
     [ run bind/bind_member_variable_tests.cpp ]
     [ run bind/bug5782.cpp ]
     ;
-    
+
 test-suite phoenix_statement :
     [ run statement/if_tests.cpp ]
     [ run statement/loops_tests.cpp ]
@@ -96,20 +97,20 @@ test-suite phoenix_statement :
     [ run statement/exceptions.cpp ]
     [ run statement/bug5715.cpp ]
     ;
-        
+
 test-suite phoenix_container :
-    [ run container/container_tests1a.cpp ] 
-    [ run container/container_tests1b.cpp ] 
-    [ run container/container_tests2a.cpp ] 
-    [ run container/container_tests2b.cpp ] 
-    [ run container/container_tests3a.cpp ] 
-    [ run container/container_tests3b.cpp ] 
-    [ run container/container_tests4a.cpp ] 
-    [ run container/container_tests4b.cpp ] 
-    [ run container/container_tests5a.cpp ] 
-    [ run container/container_tests5b.cpp ] 
-    [ run container/container_tests6a.cpp ] 
-    [ run container/container_tests6b.cpp ] 
+    [ run container/container_tests1a.cpp ]
+    [ run container/container_tests1b.cpp ]
+    [ run container/container_tests2a.cpp ]
+    [ run container/container_tests2b.cpp ]
+    [ run container/container_tests3a.cpp ]
+    [ run container/container_tests3b.cpp ]
+    [ run container/container_tests4a.cpp ]
+    [ run container/container_tests4b.cpp ]
+    [ run container/container_tests5a.cpp ]
+    [ run container/container_tests5b.cpp ]
+    [ run container/container_tests6a.cpp ]
+    [ run container/container_tests6b.cpp ]
     [ run container/container_tests7a.cpp ]
     [ run container/container_tests7b.cpp ]
     [ run container/container_tests8a.cpp ]

@@ -23,6 +23,7 @@ if [ os.environ CI ]
 
 project
     : requirements
+        <library>/boost/phoenix//boost_phoenix
         <toolset>msvc:<define>_SCL_SECURE_NO_DEPRECATE
         <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
         <toolset>msvc:<define>_CRT_SECURE_NO_DEPRECATE

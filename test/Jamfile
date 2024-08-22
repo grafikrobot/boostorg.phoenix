@@ -11,7 +11,8 @@
 import testing ;
 import os ;
 
-import ../../config/checks/config : requires ;
+import-search /boost/config/checks ;
+import config : requires ;
 
 if [ os.environ CI ]
 {
@@ -22,6 +23,7 @@ if [ os.environ CI ]
 
 project
     : requirements
+        <library>/boost/phoenix//boost_phoenix
         <toolset>msvc:<define>_SCL_SECURE_NO_DEPRECATE
         <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
         <toolset>msvc:<define>_CRT_SECURE_NO_DEPRECATE
@@ -29,11 +31,11 @@ project
         $(CI_DEFINES)
     ;
 
-local multi-threading = <library>/boost/thread
+local multi-threading = <library>/boost/thread//boost_thread
                         <threading>multi <define>BOOST_ALL_NO_LIB=1 ;
 
 test-suite phoenix_core :
-    [ run core/custom_terminal.cpp ]
+    [ run core/custom_terminal.cpp /boost/log//boost_log ]
     [ run core/intel_test.cpp ]
     [ run core/primitives_tests.cpp ]
     ;
@@ -88,7 +90,7 @@ test-suite phoenix_bind :
     [ run bind/bind_member_variable_tests.cpp ]
     [ run bind/bug5782.cpp ]
     ;
-    
+
 test-suite phoenix_statement :
     [ run statement/if_tests.cpp ]
     [ run statement/loops_tests.cpp ]
@@ -96,20 +98,20 @@ test-suite phoenix_statement :
     [ run statement/exceptions.cpp ]
     [ run statement/bug5715.cpp ]
     ;
-        
+
 test-suite phoenix_container :
-    [ run container/container_tests1a.cpp ] 
-    [ run container/container_tests1b.cpp ] 
-    [ run container/container_tests2a.cpp ] 
-    [ run container/container_tests2b.cpp ] 
-    [ run container/container_tests3a.cpp ] 
-    [ run container/container_tests3b.cpp ] 
-    [ run container/container_tests4a.cpp ] 
-    [ run container/container_tests4b.cpp ] 
-    [ run container/container_tests5a.cpp ] 
-    [ run container/container_tests5b.cpp ] 
-    [ run container/container_tests6a.cpp ] 
-    [ run container/container_tests6b.cpp ] 
+    [ run container/container_tests1a.cpp ]
+    [ run container/container_tests1b.cpp ]
+    [ run container/container_tests2a.cpp ]
+    [ run container/container_tests2b.cpp ]
+    [ run container/container_tests3a.cpp ]
+    [ run container/container_tests3b.cpp ]
+    [ run container/container_tests4a.cpp ]
+    [ run container/container_tests4b.cpp ]
+    [ run container/container_tests5a.cpp ]
+    [ run container/container_tests5b.cpp ]
+    [ run container/container_tests6a.cpp ]
+    [ run container/container_tests6b.cpp ]
     [ run container/container_tests7a.cpp ]
     [ run container/container_tests7b.cpp ]
     [ run container/container_tests8a.cpp ]
@@ -176,10 +178,10 @@ test-suite phoenix_algorithm :
     [ run algorithm/transformation2.cpp ]
     [ run algorithm/transformation3.cpp ]
     [ run algorithm/transformation4.cpp ]
-    [ run algorithm/querying.cpp ]
-    [ run algorithm/querying_find.cpp ]
+    [ run algorithm/querying.cpp /boost/assign//boost_assign ]
+    [ run algorithm/querying_find.cpp /boost/assign//boost_assign ]
     [ run algorithm/querying2.cpp ]
-    [ run algorithm/querying_find2.cpp ]
+    [ run algorithm/querying_find2.cpp /boost/assign//boost_assign ]
     ;
 
 test-suite phoenix_boost_bind_compatibility :
@@ -217,7 +219,7 @@ test-suite phoenix_boost_bind_compatibility :
 
 test-suite phoenix_bll_compatibility :
     [ run bll_compatibility/algorithm_test.cpp ]
-    [ run bll_compatibility/bind_tests_advanced.cpp ]
+    [ run bll_compatibility/bind_tests_advanced.cpp /boost/any//boost_any ]
 #    [ run bll_compatibility/bind_tests_simple.cpp ]
 #    [ run bll_compatibility/bind_tests_simple_f_refs.cpp ]
 #    [ run bll_compatibility/bll_and_function.cpp ]
@@ -242,7 +244,7 @@ test-suite phoenix_regression :
     [ run regression/bug5626.cpp ]
     [ run regression/bug5824.cpp ]
  #   [ run regression/bug5875.cpp ]
-    [ run regression/bug5968.cpp ]
+    [ run regression/bug5968.cpp /boost/signals2//boost_signals2 ]
     [ run regression/bug6040.cpp ]
     [ run regression/bug6268.cpp ]
     [ run regression/bug7165.cpp ]
